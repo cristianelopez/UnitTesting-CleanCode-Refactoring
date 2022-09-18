@@ -1,4 +1,4 @@
-package refactoring.cleancode;
+package refactoring.cleancode.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

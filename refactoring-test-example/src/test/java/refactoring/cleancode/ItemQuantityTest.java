@@ -1,14 +1,14 @@
-package ar.edu.unq;
+package refactoring.cleancode;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import junit.framework.TestCase;
-import refactoring.cleancode.Address;
-import refactoring.cleancode.Customer;
-import refactoring.cleancode.Invoice;
-import refactoring.cleancode.LineItem;
-import refactoring.cleancode.Product;
+import refactoring.cleancode.model.Address;
+import refactoring.cleancode.model.Customer;
+import refactoring.cleancode.model.Invoice;
+import refactoring.cleancode.model.LineItem;
+import refactoring.cleancode.model.Product;
 
 public class ItemQuantityTest extends TestCase {
 
@@ -27,7 +27,7 @@ public class ItemQuantityTest extends TestCase {
             // Exercise SUT
             invoice.addItemQuantity(product, 5);
             // Verify outcome
-            List lineItems = invoice.getLineItems();
+            List<LineItem> lineItems = invoice.getLineItems();
             if (lineItems.size() == 1) {
                 LineItem actItem = (LineItem) lineItems.get(0);
                 assertEquals("inv", invoice, actItem.getInv());
@@ -65,7 +65,7 @@ public class ItemQuantityTest extends TestCase {
             // Exercise SUT
             invoice.addItemQuantity(product, 5);
             // Verify outcome
-            List lineItems = invoice.getLineItems();
+            List<LineItem> lineItems = invoice.getLineItems();
             if (lineItems.size() == 1) {
                 LineItem actItem = (LineItem) lineItems.get(0);
                 assertEquals("inv", invoice, actItem.getInv());
@@ -105,7 +105,7 @@ public class ItemQuantityTest extends TestCase {
             invoice.addItemQuantity(product, 5);
             // Verify outcome
 
-            List lineItems = invoice.getLineItems();
+            List<LineItem> lineItems = invoice.getLineItems();
             if (lineItems.size() == 1) {
                 LineItem expected = new LineItem(invoice, product, 5, new BigDecimal("30"), new BigDecimal("69.965"));
                 LineItem actItem = (LineItem) lineItems.get(0);
@@ -170,6 +170,10 @@ public class ItemQuantityTest extends TestCase {
         this.assertContainsExactlyOneLineItem(invoice, expected);
     }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////// LAST VERSION //////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+    
     public void testAddItemQuantity_severalQuantity_v14() {
         final int QUANTITY = 5;
         final BigDecimal UNIT_PRICE = new BigDecimal("19.99");
@@ -186,6 +190,14 @@ public class ItemQuantityTest extends TestCase {
         LineItem expected = this.createLineItem(QUANTITY, CUST_DISCOUNT_PC, EXTENDED_PRICE, product, invoice);
         this.assertContainsExactlyOneLineItem(invoice, expected);
     }
+    
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////// HELPERS///// //////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     private LineItem createLineItem(final int quantity, final BigDecimal cust_discount_pc,
             final BigDecimal extended_price, final Product product, final Invoice invoice) {
@@ -196,9 +208,10 @@ public class ItemQuantityTest extends TestCase {
     private Customer createACustomer(final BigDecimal cust_discount_pc) {
         return new Customer(99, "John", "Doe", cust_discount_pc, null, null);
     }
+    
+    
 
-    // /////////////////////////HELPERS/////////////////////////////
-    // /////////////////////////////////////////////////////////
+  
     private Invoice createInvoice(final Customer customer) {
         return new Invoice(customer);
     }

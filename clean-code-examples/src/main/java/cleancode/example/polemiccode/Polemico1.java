@@ -52,7 +52,7 @@ public class Polemico1 {
                     if (foundAtPos > 0) {
                         moveAt = foundAtPos - 1;
                     }
-                } else if (pnButtonValueCaminos.equals(new Integer(2))) {
+                } else if (pnButtonValueCaminos.equals(2)) {
                     // next
                     moveAt = 0;
                     if (foundAtPos < lenCam - 1) {
@@ -86,12 +86,12 @@ public class Polemico1 {
                 dps = this.getDetalleEntrega_();
                 // Entrega
                 lenPtos = this.getSolicitud().getPuntosPorRolYZona(RolPunto.ENTREGA, dps.getZonaSelected()).size();
-                isNext = pnButtonValuePtoEnt.equals(new Integer(2));
+                isNext = pnButtonValuePtoEnt.equals(2);
             } else {
                 dps = this.getDetalleRecepcion_();
                 // Recepcion
                 lenPtos = this.getSolicitud().getPuntosPorRolYZona(RolPunto.RECEPCION, dps.getZonaSelected()).size();
-                isNext = pnButtonValuePtoRec.equals(new Integer(2));
+                isNext = pnButtonValuePtoRec.equals(2);
             }
 
             Iterator itPtos = dps.getComponent("tablaPuntos").getTableModel().getCurrentPageRows();

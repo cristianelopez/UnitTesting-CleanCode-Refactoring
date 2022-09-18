@@ -95,7 +95,8 @@ public class ReplaceParameterWithExplicitMethods {
 
         String[] options = { "PDF", "CSV", "PLAIN" };
 
-        JComboBox comboBox = new JComboBox(options);
+        @SuppressWarnings("unchecked")
+		JComboBox comboBox = new JComboBox(options);
 
         public SaveAsWindow_v1() {
             this.bindComboActions();
@@ -133,7 +134,8 @@ public class ReplaceParameterWithExplicitMethods {
             this.bindComboActions();
         }
 
-        private void initCombo() {
+        @SuppressWarnings("unchecked")
+		private void initCombo() {
             formatters = new ArrayList<Command>();
 
             formatters.add(new PDFFormatCmd(report));
