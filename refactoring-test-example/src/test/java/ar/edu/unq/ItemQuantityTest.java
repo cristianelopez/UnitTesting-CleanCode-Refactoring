@@ -4,6 +4,11 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import junit.framework.TestCase;
+import refactoring.cleancode.Address;
+import refactoring.cleancode.Customer;
+import refactoring.cleancode.Invoice;
+import refactoring.cleancode.LineItem;
+import refactoring.cleancode.Product;
 
 public class ItemQuantityTest extends TestCase {
 

@@ -13,6 +13,12 @@ import static org.mockito.Mockito.when;
 import java.util.Date;
 
 import junit.framework.TestCase;
+import testing.mocks.PersistenceException;
+import testing.mocks.Person;
+import testing.mocks.PersonPersister;
+import testing.mocks.PersonPersisterImpl;
+import testing.mocks.Repository;
+import testing.mocks.RepositoryException;
 
 /**
  * Prueba usando mockito.
